@@ -11,14 +11,14 @@ const home = {
 
 // 项目主页
 const logo = {
-    name: "FDVS",
+    name: "CCA-Attention",
     link: "#",
 }
 
 // 右侧更多菜单
 const more_paper = {
     "FDVS": {
-        name: "FDVS - TCSVT 2024",
+        name: "FDVS - IEEE TCSVT 2024",
         link: "https://bolixinyu.github.io/FDVS/",
     },
     "DGA": {
