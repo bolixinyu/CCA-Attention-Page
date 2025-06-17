@@ -23,7 +23,7 @@ export default defineConfig({
       ],
     }),
   ],
-  base:'/FDVS',
+  base:'/CCA-Attention-Page',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
