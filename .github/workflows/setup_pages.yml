@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 需要完整的git历史记录
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.16.0'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: |
+        npm run build
+        ls -R dist  # 调试用, 查看dist目录结构
+
+    - name: Verify dist directory
+      run: |
+        if [ ! -d "dist" ]; then
+          echo "❌ Error: dist directory was not created!"
+          exit 1
+        fi
+
+    - name: Deploy to static-pages branch
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        publish_branch: static-pages
+        force_orphan: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Deploy to Static Pages 🚀'
