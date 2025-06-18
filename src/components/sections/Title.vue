@@ -42,7 +42,7 @@ const authors = [
     address_flag: "1,2"
   },
   {
-    name: "Yiru Li",
+    name: "Yirui Li",
     address_flag: "1"
   },
   {
